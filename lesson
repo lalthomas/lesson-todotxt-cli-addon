@@ -1,0 +1,46 @@
+#!/bin/bash
+# todo.txt add-on to create log of events
+# Copyright (c) Lal Thomas, http://lalamboori.blogspot.in
+# License: GPL3, http://www.gnu.org/copyleft/gpl.html
+
+# Stop Verbose lines, thanks to Mark Harrison
+TODOTXT_VERBOSE=0
+TODOTXT_PLAIN=0
+
+if [[ -z $LOG_FILE ]]; then
+    LOG_FILE=lesson.txt
+fi
+
+function usage() {
+    echo "  $(basename $0) [OPTION] "    
+	echo "    OPTION"
+	echo "    add <lesson> - add the lesson (default)"
+	echo "    usage - show the usage"
+    exit
+}
+
+add(){	
+	echo "$(date "+%Y-%m-%d") $@">> $doLessonPath
+}
+
+# Get action
+shift
+action=$1
+shift
+# Get rest of them
+entry="$@"
+
+case "$action" in
+	"usage")
+		usage
+		exit
+		;;
+	"add")
+		add $entry
+		exit
+		;;	
+	*)	
+		log $action $entry
+		exit
+		;;	   
+esac

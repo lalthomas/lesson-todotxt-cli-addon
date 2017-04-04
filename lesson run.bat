@@ -21,7 +21,14 @@ exit
 
 REM Sub Routine
 :COMPILE
-
+%~d0
+cd "%~p0"
+set scriptFolderPathFull=%~dp0%
+set scriptFolderPath=%scriptFolderPathFull:~0,-1%
+pushd "%userProfile%\.todo.actions.d"
+echo "%scriptFolderPath%"
+mklink /d lesson "%scriptFolderPath%"
+popd
 exit /b 0
 
 :OUTPUT
