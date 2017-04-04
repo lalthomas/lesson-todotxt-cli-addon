@@ -11,16 +11,18 @@ if [[ -z $LOG_FILE ]]; then
     LOG_FILE=lesson.txt
 fi
 
-function usage() {
-    echo "  $(basename $0) [OPTION] "    
+usage() {
+
+	echo "  $(basename $0) [OPTION] "    
 	echo "    OPTION"
 	echo "    add <lesson> - add the lesson (default)"
 	echo "    usage - show the usage"
-    exit
+	exit
 }
 
-add(){	
-	echo "$(date "+%Y-%m-%d") $@">> $doLessonPath
+add(){ 
+	#
+	echo "$(date "+%Y-%m-%d") $@">> $doLessonPath 
 }
 
 # Get action
@@ -40,7 +42,11 @@ case "$action" in
 		exit
 		;;	
 	*)	
-		log $action $entry
+		echo
+		echo "What did you learned today :"
+		echo	
+		entry=$(sed '/^$/q')		
+		add $entry
 		exit
-		;;	   
+		;;
 esac
