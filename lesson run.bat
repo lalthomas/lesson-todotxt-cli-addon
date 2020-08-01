@@ -1,8 +1,7 @@
 @echo OFF 	
 REM File : lesson run.bat 	
 REM Creation Date : 2017-04-04 	
-REM Author : Lal Thomas 	
-REM Original File : D:\Dropbox\project\20170404-lesson todotxt cli addon\lesson 	
+REM Author : Lal Thomas 		
 	
 
 IF [%1] == [] GOTO :SETFILE
@@ -10,7 +9,7 @@ set file=%1
 GOTO :EXECUTE
 
 :SETFILE
-set file="D:\Dropbox\project\20170404-lesson todotxt cli addon\lesson"
+set file="D:\project\20170404-lesson todotxt cli addon\lesson"
 GOTO :EXECUTE
 
 REM Section
